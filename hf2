@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+int szorzat(int a, int b){
+    return a*b;
+}
+
+int main(){
+    std::cout << szorzat(8,3) << std::endl;
+    
+    return 0;
+}
