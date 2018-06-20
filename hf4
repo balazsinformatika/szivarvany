@@ -1,0 +1,113 @@
+#include <stdio.h>
+# include <iostream>
+using namespace std;
+
+class Noveny{
+    int meret;
+    
+    public:
+    Noveny(int _meret){
+        meret=_meret;
+    }
+    
+    int getMeret(){
+        return meret;
+    }
+    
+    void setMeret(int ujmeret){
+        meret=ujmeret;
+    }
+    
+    void toString(){
+        std::cout << getMeret()<<" m3 " << std::endl;
+    }
+};
+
+class Zoldseg:public Noveny{
+    int csipfok;
+    
+    public:
+    Zoldseg(int _meret, int _csipfok):Noveny(_meret){
+        csipfok=_csipfok;
+    }
+    
+    int getCsipfok(){
+        return csipfok;
+    }
+    
+    void setCsipfok(int ujcsipok){
+        csipfok=ujcsipok;
+    }
+    
+    void toString(){
+        std::cout << getMeret()<<" m3 "<<getCsipfok()<<" C " << std::endl;
+    }
+};
+
+class Gyumi:public Noveny{
+    int efok;
+    
+    public:
+    Gyumi(int _meret, int _efok):Noveny(_meret){
+        efok=_efok;
+    }
+    
+    int getEfok(){
+        return efok;
+    }
+    
+    void setEfok(int ujefok){
+        efok=ujefok;
+    }
+    
+    void toString(){
+        std::cout << getMeret()<<" m3 "<<getEfok()<<" C " << std::endl;
+    }
+};
+
+class Papi:public Zoldseg{
+    int szin;
+    
+    public:
+    Papi(int _meret, int _efok):Zoldseg(_efok){
+        szin=_szin;
+    }
+    
+    string getSzin(){
+        return szin;
+    }
+    
+    void setSzin(string ujszin){
+        szin=ujszin;
+    }
+    
+    void toString(){
+        std::cout << getMeret()<<" m3 "<<getEfok()<<" C " << getSzin()<<szin<<std::endl;
+    }
+};
+
+class Hagyma:public Zoldseg{
+    int retegszam;
+    
+    public:
+    Hagyma(int _meret, int _efok):Zoldseg(_efok){
+        retegszam=_retegszam;
+    }
+    
+    int getRetegszam(){
+        return retegszam;
+    }
+    
+    void setRetegszam(int ujretegszam){
+        retegszam=ujretegszam;
+    }
+    
+    void toString(){
+        std::cout << getMeret()<<" m3 "<<getEfok()<<" C " << getRetegszam()<<" db"<<std::endl;
+    }
+};
+
+int main(){
+   
+    return 0;
+}
