@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+
+class Epulet{
+    
+    int ablakszam;
+    int alapterulet;
+    
+    public:
+    Epulet(int _ablakszam, int _alapterulet){
+        ablakszam=_ablakszam;
+        alapterulet=_alapterulet;
+    }
+    
+    int getAblakszam(){
+        return ablakszam;
+    }
+    
+    int getAlapterulet(){
+        return alapterulet;
+    }
+    
+    void setAblakszam(int ujablakszam){
+        ablakszam=ujablakszam;
+    }
+    
+    void setAlapterulet(int ujalapterulet){
+        alapterulet=ujalapterulet;
+    }
+    
+    void toString(){
+        std::cout << getAblakszam() <<" db "<<getAlapterulet()<<" m2"<< std::endl;
+    }
+};
+
+class Haz: public Epulet{
+    int ajtoszam;
+    
+    public:
+    Haz(int _ablakszam, int _alapterulet, int _ajtoszam): Epulet(_ablakszam,_alapterulet){
+        ajtoszam=_ajtoszam;
+    }
+    
+    int getAjtoszam(){
+        return ajtoszam;
+    }
+    
+    
+    void setAjtoszam(int ujajtoszam){
+        ajtoszam=ujajtoszam;
+    }
+    
+    void toString(){
+        std::cout << getAblakszam() <<" db "<<getAlapterulet()<<" m2 " << getAjtoszam()<<" db"<<std::endl;
+    }
+};
+
+class Garazs: public Epulet{
+    int parkoloszam;
+    
+    public:
+    Garazs(int _ablakszam, int _alapterulet, int _parkoloszam): Epulet(_ablakszam,_alapterulet){
+        parkoloszam=_parkoloszam;
+    }
+    
+    int getParkoloszam(){
+        return parkoloszam;
+    }
+    
+    
+    void setParkoloszam(int ujparkoloszam){
+        parkoloszam=ujparkoloszam;
+    }
+    
+    void toString(){
+        std::cout << getAblakszam() <<" db "<<getAlapterulet()<<" m2 " << getParkoloszam()<<" db"<<std::endl;
+    }
+};
+
+int main()
+{
+    Epulet elso(250,2500);
+    elso.toString();
+    Haz elsohaz(300,3000,30);
+    elsohaz.toString();
+    Garazs elsogarazs(7,750,5);
+    elsogarazs.toString();
+
+
+    return 0;
+}
