@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+class Szemely{
+    string nev;
+    int eletkor;
+    int ID;
+    
+    public:
+    Szemely(){}
+    Szemely (string _nev, int _eletkor, int _ID){
+        nev= _nev;
+        eletkor= _eletkor;
+        ID=_ID;
+        }
+        
+        string getNev(){
+            return nev;
+        }
+        
+        int getEletkor(){
+            return eletkor;
+        }
+        
+        int getId(){
+            return ID;
+        }
+        
+        void setNev(string _nev){
+            nev= _nev;
+        }
+        
+        void setEletkor(int _eletkor){
+            eletkor= _eletkor;
+        }
+        
+        void setId(int _ID){
+            ID= _ID;
+        }
+        
+        void toString(){
+            std::cout << "Nev:"<< getNev()<<" Eletkor:"<<getEletkor() <<" ID:"<<getId()<< std::endl;
+        }
+};
+
+class Szamla{
+    Szemely tulaj;
+    int egyenleg;
+    
+    public:
+    Szamla(int _egyenleg, string _nev, int _eletkor, int _ID){
+        egyenleg= _egyenleg;
+        tulaj.setNev( _nev);
+        tulaj.setEletkor( _eletkor);
+        tulaj.setId( _ID);
+    }
+    
+    Szamla(Szemely _tulaj, int _egyenleg){
+        tulaj= _tulaj;
+        egyenleg= _egyenleg;
+    }
+    
+    int getEgyenleg(){
+        return egyenleg;
+    }
+    void toString(){
+        tulaj.toString();
+        std::cout <<" Pénz: "<<getEgyenleg()<< std::endl;
+    }
+    
+    bool ki(int _egyenleg){
+        if( _egyenleg<=egyenleg){
+            egyenleg-= _egyenleg;
+            return true;
+        }
+        return false;
+    }
+    
+    void be(int  _egyenleg){
+        egyenleg+= _egyenleg;
+    }
+    
+};
+
+int main(){
+    Szemely sze("Balazs",19,12345678);
+    sze.toString();
+    
+    Szamla sza(sze,60000);
+    sza.toString();
+    
+    Szemely p ("Porci",18, 87654321, 150000);
+    p.toString();
+    
+    p.be(50000);
+    p.toString();
+    
+    p.ki(130000);
+    p.toString();
+    
+    return 0;
+}
