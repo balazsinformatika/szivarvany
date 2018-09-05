@@ -1,0 +1,104 @@
+#include <iostream>
+using namespace std;
+
+class Edesseg{
+    int cukimennyiseg;
+    
+    public:
+    Edesseg(int _cukimennyiseg){
+        cukimennyiseg=_cukimennyiseg;
+    }
+    
+    int getCukimennyiseg(){
+        return cukimennyiseg;
+    }
+    
+    void setCukimennyiseg(int ujcukimennyiseg){
+        cukimennyiseg=ujcukimennyiseg;
+    }
+    
+    void toString(){
+        std::cout<<getCukimennyiseg()<<std::endl;
+    }
+};
+
+class Hidegedesseg:public Edesseg{
+    int maxho;
+    
+    public:
+    Hidegedesseg(int _cukimennyiseg, int _maxho):Edesseg(_cukimennyiseg){
+        maxho=_maxho;
+    }
+    
+    int getMaxho(){
+        return maxho;
+    }
+    
+    void setMaxho(int ujmaxho){
+        maxho=ujmaxho;
+    }
+    
+    void toString(){
+        Edesseg::toString();
+        std::cout<<getMaxho()<<std::endl;
+    }
+};
+
+class Suti:public Edesseg{
+  int sutesido;
+  
+  public:
+  Suti(int _cukimennyiseg, int _sutesido):Edesseg(_cukimennyiseg){
+      sutesido=_sutesido;
+  }
+  
+  int getSutesido(){
+      return sutesido;
+  }
+  
+  void setSutesido(int ujsutesido){
+      sutesido=ujsutesido;
+  }
+  
+  void toString(){
+      Edesseg::toString();
+      std::cout<<getSutesido()<<std::endl;
+  }
+};
+
+class Fagyi:public Edesseg{
+    string iz;
+    
+    public:
+    Fagyi(int _cukimennyiseg, string _iz):Edesseg(_cukimennyiseg){
+        iz=_iz;
+    }
+    
+    string getIz(){
+        return iz;
+    }
+    
+    void setIz(string ujiz){
+        iz=ujiz;
+    }
+    
+    void toString(){
+        Edesseg::toString();
+        std::cout << iz << std::endl;
+    }
+};
+
+int main()
+{
+    Edesseg e(1);
+    e.toString();
+    
+    Hidegedesseg h(2, 3);
+    h.toString();
+    
+    Suti s(4, 5);
+    s.toString();
+    
+    Fagyi f(6, "banán");
+    f.toString();
+}
