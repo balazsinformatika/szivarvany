@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include<iostream>
+using namespace std;
+
+class public: Noveny{
+        int kor;
+        int ontozes;
+        
+    public:
+    Noveny(int_kor, int_ontozes){
+         kor=_kor;
+         ontozes=_ontozes;
+    }
+    
+    int getKor(){
+        return kor;
+    }
+    
+    void setKor(ujkor){
+        kor=ujkor;
+    }
+    
+    int getOntozes(){
+        return ontozes;
+    }
+    
+    void setOntozes(ujontozes){
+        ontozes=ujontozes;
+    }
+    
+    void toString(){
+        std::cout << getKor() << " "<< getOntozes()<< " " << "naponta" <<std::endl;
+    }
+};
+
+class Bokor : Punlic Noveny{
+    int atmero;
+    
+    public:
+    Bokor(int _kor, int _ontozes, int _atmero):Noveny(_kor, _ontozes){
+        atmero=_atmero;
+    }
+    
+    int getAtmero(){
+        return atmero;
+    }
+    
+    void setAtmero(ujatmero){
+        atmero=ujatmero;
+    }
+    
+    void toString(){
+        Noveny::toString();
+        std::cout << getAtmero << " " << "cm" <<std::endl;
+    }
+};
+int main()
+{
+    return 0;
+}
