@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int faktorialis(int szam){
+    int eredmeny=1;
+    for(int i=1; i<(szam+1); i++){
+        eredmeny=eredmeny*i;
+    }
+    return eredmeny;
+}
+
+int main()
+{
+    std::cout<< faktorialis(4) <<std::endl;
+    return 0;
+}
