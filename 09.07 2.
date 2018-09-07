@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int sum(int kezdo, int vegso){
+    int eredmeny=0;
+    for(int i=kezdo; i<(vegso+1); i++){
+        eredmeny=eredmeny+i;
+    }
+    return eredmeny;
+}
+
+int main()
+{
+  std::cout << sum(1000,10000) << std::endl;
+  
+    return 0;
+}
