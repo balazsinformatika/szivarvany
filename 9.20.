@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n){
+    if((n==1)||(n==0)){
+        return(n);
+    }
+    else{
+        return(fibonacci(n-1)+fibonacci(n-2));
+    }
+}
+
+
+int hatvany (int szam, int kitevo){
+    int eredmeny=1;
+    for (int i=0; i<kitevo; i++){
+        eredmeny=eredmeny*szam;
+    }
+        return eredmeny;
+}
+
+void fpiramis(int meret){
+    for(int i=1; i<(meret+1);i++){
+        for (int j=i; j<(meret+1); j++){
+            cout<<j;
+        }
+        std::cout << endl;
+    }
+}
+
+int main()
+{
+    int n,i=0;
+    printf("Input the number of terms for Fibonacci Series:");
+    scanf("%d",&n);
+    printf("\nFibonnaci Series is as follows\n");
+    while(i<n)
+    {
+        printf("%d ",fibonacci(i));
+        i++;
+    }
+
+    std::cout << hatvany (2,6) <<std::endl;
+    
+    fpiramis(5);
+    
+    return 0;
+}
