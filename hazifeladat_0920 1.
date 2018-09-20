@@ -1,0 +1,8 @@
+#include <iostream>
+
+int main()
+{
+    printf("A program sikeresen lefutott.");
+
+    return 0;
+}
