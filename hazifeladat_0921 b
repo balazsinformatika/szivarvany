@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+void hf(){
+    for(int i=0; i<21; i++){
+        if(i%2==0){
+            std::cout << i << std::endl;
+        }
+    }
+}
+
+int main(){
+    hf();
+    return 0;
+}
