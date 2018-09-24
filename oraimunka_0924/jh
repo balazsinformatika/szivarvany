@@ -1,0 +1,3 @@
+//Memóban két féle foglalás van:1.Ford. memóban megfelelő méretű, üres egységeket foglal; ekkor az üres tömb 0-ákkal tele 
+                                2.Ford csak oszt. egy használatlan memó területet a kívánt egységekre.
+Használatlan memó terület<> hogy nem üres(Memó szenny).
