@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+void hf (int szam1, int szam2){
+    while(szam1<(szam2+1)){
+    std::cout << szam1;
+    szam1++;
+}
+}
+
+int main(){
+hf(0,6)
+
+return 0;
+}
