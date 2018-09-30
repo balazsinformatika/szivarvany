@@ -1,0 +1,59 @@
+#include <iostream>
+#define TOMBMERET 22
+using namespace std;
+ 
+ char tomb2[TOMBMERET];
+ 
+ void tombki(){
+    for(int index=0;index<TOMBMERET;index++){
+        cout << tomb2[index] << endl;
+    }
+}
+
+ void be(char ide, char ezt){
+    tomb2[ide]=ezt;
+}
+
+ char ki(int innen){
+    return tomb2[innen];
+}
+
+ int main(){
+    for(int index=0;index<TOMBMERET;index++){
+        tomb2[index]=index;
+    }
+    
+    tombki();
+    cout << "+" << endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#define TOMBMERET 22
+using namespace std;
+ 
+ int tomb2[TOMBMERET];
+ 
+ void tombki(){
+    for(int index=0;index<TOMBMERET;index++){
+            cout << tomb2[2] << endl;
+    }
+}
+
+ int main(){
+    for(int index=0;index<TOMBMERET;index++){
+        tomb2[index]=index;
+    }
+    
+    tombki();
+    return 0;
+}
