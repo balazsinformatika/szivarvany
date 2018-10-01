@@ -1,0 +1,10 @@
+
+main(){
+     int tomb[10];
+
+     int szar(){
+         for(i=0;i<(10+1);i++){
+             cout <<  
+
+return 0;
+}
