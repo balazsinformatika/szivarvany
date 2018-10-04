@@ -1,0 +1,13 @@
+int main(){
+    for(int index=0; index<20; i++){
+        tomb[index]=index;
+    }
+
+    for(int index=0; index<20; i++){
+        std::cout << tomb[index] <<std::endl;
+
+        if (index%2==0);
+    }
+
+    return 0;
+}
