@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+int duplazzmeg(int engem){
+    return engem*2;
+}
+
+int main()
+{
+    int elsoszam=10;
+    int masodikszam;
+
+    cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    masodikszam=elsoszam;
+
+     cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    duplazzmeg(masodikszam);
+
+     cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    int harmadikszam=duplazzmeg(masodikszam);
+
+     cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    cout<<"harmadikszam cim="<<&harmadikszam<<endl;
+
+    cout<<"harmadikszam cim="<<&harmadikszam<<endl;
+
+
+
+    cout << "Lefutottam" << endl;
+    return 0;
+}
