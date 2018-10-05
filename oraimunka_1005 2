@@ -1,0 +1,113 @@
+#include <iostream>
+using namespace std;
+
+int duplazzmeg(int engem){
+    return engem*2;
+}
+
+int main()
+{
+    int elsoszam=10;
+    int masodikszam;
+    int *elsopointer;
+
+    cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    cout<<"---___---"<<endl;
+
+    masodikszam=elsoszam;
+
+     cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    cout<<"---___---"<<endl;
+
+    duplazzmeg(masodikszam);
+
+     cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    cout<<"---___---"<<endl;
+
+    int harmadikszam=duplazzmeg(masodikszam);
+
+     cout<<"elsoszam="<<elsoszam<<endl;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+
+    cout<<"elsoszam cim="<<&elsoszam<<endl;
+
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    cout<<"harmadikszam cim="<<&harmadikszam<<endl;
+
+    cout<<"harmadikszam cim="<<&harmadikszam<<endl;
+
+    cout<<"---___---"<<endl;
+
+    cout<<"elsopointer="<<elsopointer<<endl;
+
+    cout<<"elsopointer cim="<<&elsopointer<<endl;
+
+    cout<<"---___---"<<endl;
+
+    elsopointer=&masodikszam;
+
+    cout<<"masodikszam="<<masodikszam<<endl;
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    cout<<"elsopointer="<<elsopointer<<endl;
+    cout<<"elsopointer cim="<<&elsopointer<<endl;
+
+    cout<<"---___---"<<endl;
+
+    *elsopointer=120;
+    cout<<"masodikszam="<<masodikszam<<endl;
+    cout<<"masodikszam cim="<<&masodikszam<<endl;
+
+    cout<<"elsopointer="<<elsopointer<<endl;
+    cout<<"elsopointer cim="<<&elsopointer<<endl;
+
+    cout<<"---___---"<<endl;
+
+    cout<<"ahova mutat az elso pointer"<<*elsopointer<<endl;
+
+    cout<<"---___---"<<endl;
+
+    int tomb[10];
+    for(int i=0; i<10; i++){
+        cout<<"tomb"<<i<<" = "<<tomb[i];
+        cout<<"\t\t A cime = "<<&tomb[i]<<endl;
+    }
+
+    cout<<"---___---"<<endl;
+
+    for(int i=0; i<10; i++){
+        tomb[i]=i;
+    }
+
+    for(int i=0; i<10; i++){
+        cout<<"tomb"<<i<<" = "<<tomb[i];
+        cout<<"\t\t A cime = "<<&tomb[i]<<endl;
+    }
+
+
+    cout << "Lefutottam" << endl;
+    return 0;
+}
