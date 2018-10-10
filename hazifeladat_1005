@@ -1,0 +1,116 @@
+#include <iostream>
+#define TOMBMERET 22
+using namespace std;
+
+void negativPiramis(int eszam){
+    for(int i=0; i<eszam; i++){
+        for(int j=i; j<eszam; j++){
+            cout<<"L";
+        }
+        cout <<"\n";
+    }
+}
+
+void pozitivPiramis(int eszam){
+    for(int i=0; i<eszam; i++){
+        for(int j=0; j<i+1; j++){
+            cout<<"L";
+        }
+        cout<<"\n";
+    }
+}
+
+void c(int db, int vmi){     //Itt Dani. :(
+    for(int i=0; i<db; i++){
+        pozitivPiramis(vmi);//Itt Dani. :(
+        negativPiramis(vmi);//Itt Dani. :(
+    }
+}
+
+bool b(int &szam){
+    szam=2*szam;
+    return true;
+}
+
+int cnegyzet(int szam){
+    return szam*szam;
+}
+
+int tomb[TOMBMERET];
+
+int main(){
+    
+negativPiramis(3);
+
+cout<<"-----------------------------------------------------------------------------"<<"\n";
+
+pozitivPiramis(3);
+
+cout<<"-----------------------------------------------------------------------------"<<"\n";
+
+c(2,5);
+
+cout<<"-----------------------------------------------------------------------------"<<"\n";
+
+int tomb[4];
+
+int elsoSzam=2;
+int masodikSzam=22;
+int harmadikSzam; //Itt Dani. :(
+int negyedikSzam; //Itt Dani. :(
+
+cout<<"elsoSzam="<<elsoSzam<<"\n"; 
+cout<<"elsoSzam cim="<<&elsoSzam<<"\n";
+cout<<"masodikSzam="<<masodikSzam<<"\n";
+cout<<"masodikSzam cim="<<&masodikSzam<<"\n";
+cout<<"harmadikSzam="<<harmadikSzam<<"\n";
+cout<<"harmadikSzam cim="<<&harmadikSzam<<"\n";
+cout<<"negyedikSzam="<<negyedikSzam<<"\n";
+cout<<"negyedikSzam cim="<<&negyedikSzam<<"\n";
+
+cout<<"-----------------------------------------------------------------------------"<<"\n";
+
+b(elsoSzam);
+cout<<"elsoSzam="<<elsoSzam<<"\n";
+cout<<"elsoSzam cim="<<&elsoSzam<<"\n";
+cout<<"masodikSzam="<<masodikSzam<<"\n";
+cout<<"masodikSzam cim="<<&masodikSzam<<"\n";
+cout<<"harmadikSzam="<<harmadikSzam<<"\n";
+cout<<"harmadikSzam cim="<<&harmadikSzam<<"\n";
+cout<<"negyedikSzam="<<negyedikSzam<<"\n";
+cout<<"negyedikSzam cim="<<&negyedikSzam<<"\n";
+
+cout<<"-----------------------------------------------------------------------------"<<"\n";
+
+harmadikSzam=cnegyzet(masodikSzam); //Itt Dani. :(
+cout<<"elsoSzam="<<elsoSzam<<"\n";
+cout<<"elsoSzam cim="<<&elsoSzam<<"\n";
+cout<<"masodikSzam="<<masodikSzam<<"\n";
+cout<<"masodikSzam cim="<<&masodikSzam<<"\n";
+cout<<"harmadikSzam="<<harmadikSzam<<"\n";
+cout<<"harmadikSzam cim="<<&harmadikSzam<<"\n";
+cout<<"negyedikSzam="<<negyedikSzam<<"\n";
+cout<<"negyedikSzam cim="<<&negyedikSzam<<"\n";
+
+cout<<"-----------------------------------------------------------------------------"<<"\n";
+
+for(int i=0; i<TOMBMERET; i++){
+    cout<<"Tomb"<<i<<"="<<tomb[i]<<"\n";
+    cout<<"Tomb"<<i<<"cim="<<&tomb[i]<<"\n";
+    cout<<"\n";
+}
+
+cout<<"-----------------------------------------------------------------------------"<<"\n";
+
+for(int i=0; i<TOMBMERET; i++){
+    tomb[i]=i;
+}
+
+for(int i=0; i<TOMBMERET; i++){
+    cout<<"Tomb"<<i<<"="<<tomb[i]+1<<"\n";
+    cout<<"Tomb"<<i<<"cim="<<&tomb[i]<<"\n";
+    cout<<"\n";
+}
+
+    return 0;
+}
