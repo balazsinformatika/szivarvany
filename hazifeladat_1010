@@ -1,0 +1,73 @@
+#include <iostream>
+#define TOMBMERET 10
+using namespace std;
+
+int globalistomb[TOMBMERET];
+
+void feltolt(){
+    int* pointer;
+    pointer = globalistomb;
+    for(int i=0; i<TOMBMERET; i++){
+        *pointer=i;
+        pointer++;
+    }
+}
+
+void csere(){
+    int* pointer;
+    pointer = globalistomb;
+    for(int i = 0; i < TOMBMERET; i++){
+        cout << "Eredeti ertek: " << *pointer <<"\n";
+        cout << "Eredeti ertek cime: " << pointer <<"\n";
+        
+        *pointer*=10;
+        cout << "Uj ertek: " << *pointer <<"\n";
+        cout << "Uj ertek cime: " << pointer <<"\n";
+        cout << "----||----" <<"\n";
+        pointer++;
+    }
+}
+
+bool cim(int i, int* pointer){
+    if(i<TOMBMERET){
+        pointer=&globalistomb[i];
+        return true;
+    } else return false;
+}
+
+int main(){
+    int tomb[10];
+    for(int i=0; i<10; i++){
+        tomb[i] = i;
+        cout << "tomb " << i << ".elem cime=" << &tomb[i] << " Érték=" << tomb[i] <<"\n";
+    }
+    
+    cout << "----||----" <<"\n";
+
+    int* pointer;
+    pointer = tomb;
+    cout << "Pointer hova mutat=" << pointer <<"\n";
+    cout << "Pointer ahova mutat, ott mi=" << *pointer <<"\n";
+    cout << "Pointer cim=" << &pointer <<"\n";
+    
+    cout << "----||----" <<"\n";
+
+    pointer++;
+    cout << "Pointer hova mutat=" << pointer <<"\n";
+    cout << "Pointer ahova mutat, ott mi=" << *pointer <<"\n";
+    cout << "Pointer cim=" << &pointer <<"\n";
+    
+    cout << "----||----" <<"\n";
+
+    feltolt();
+    
+    for(int i=0; i<TOMBMERET; i++){
+        cout << "globalistomb " << i << ".elem cim=" << &globalistomb[i] << " Érték=" << globalistomb[i] <<"\n";
+    }
+    
+    cout << "----||----" <<"\n";
+  
+    csere();
+    
+    return 0;
+}
