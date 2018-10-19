@@ -1,0 +1,88 @@
+#include <iostream>
+#define TOMBMERET 10
+using namespace std;
+
+int szamtomb[TOMBMERET];
+char karaktertomb[TOMBMERET];
+
+void index(){
+    for(int i=0; i<TOMBMERET; i++){
+        szamtomb[i]=i;
+    }
+}
+
+void paros(){
+    for(int i=0; i<TOMBMERET; i++){
+        szamtomb[i]=(i+1)*2;
+    }
+}
+
+bool be(int hova, int mit){
+    if(hova>=0&&hova<TOMBMERET){
+       szamtomb[hova]=mit;
+       return true;
+    }
+}
+
+bool szamotCserel(int elso, int masodik){
+    if(elso<TOMBMERET&&elso>=0&&masodik<TOMBMERET&&masodik>=0){
+        int ideiglenes = szamtomb[elso];
+            szamtomb[elso] = szamtomb[masodik];
+            szamtomb[masodik] = ideiglenes;
+
+            return true;
+    }
+    return false;
+}
+
+void kiir(){
+    for(int i=0; i<TOMBMERET; i++){
+        cout<<"Tomb"<<i<<".eleme="<<szamtomb[i]<<endl;
+    }
+}
+
+void utolsoElemBeallit(char karakter){
+    karaktertomb[9]=karakter;
+}
+
+void azAlmaJo(){
+    karaktertomb[0]='A';
+    karaktertomb[1]='z';
+    karaktertomb[2]=' ';
+    karaktertomb[3]='a';
+    karaktertomb[4]='l';
+    karaktertomb[5]='m';
+    karaktertomb[6]='a';
+    karaktertomb[7]=' ';
+    karaktertomb[8]='j';
+    karaktertomb[9]='o';
+}
+
+bool karakterindexre(int hova, char mit){
+    if(hova>=0&&hova<TOMBMERET){
+       karaktertomb[hova]=mit;
+       return true;
+    }
+    return false;
+}
+
+void kiir2(){
+    for(int i=0; i<TOMBMERET; i++){
+        cout<<i<<".karakterem="<<karaktertomb[i]<<endl;
+    }
+}
+
+void konzolrolfeltolt(){
+    for(int i=0; i<TOMBMERET; i++){
+            cout<<"Szam be "<<i+1<<".eleme"<<endl;
+        cin>>szamtomb[i];
+    }
+}
+
+int main(){
+
+    konzolrolfeltolt();
+    kiir();
+
+    return 0;
+}
