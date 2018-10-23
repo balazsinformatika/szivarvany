@@ -1,0 +1,40 @@
+#include <iostream>
+#define TOMBMERET 1
+using namespace std;
+
+int szamtomb[TOMBMERET];
+
+void index(){
+    for(int i=0; i<TOMBMERET; i++){
+        szamtomb[i]=i;
+    }
+}
+
+int faktor(int szam){            //Magamtól.
+    int eredmeny=1;
+    for(int i=1; i<szam+1; i++){
+        eredmeny=eredmeny*i;
+    }
+    return eredmeny;
+}
+
+void kiir(){
+    for(int i=0; i<TOMBMERET; i++){
+        cout<<"Faktor "<<faktor(szamtomb[i]); //Magamtól.
+    }
+}
+
+void konzolrolfeltolt(){
+    for(int i=0; i<TOMBMERET; i++){
+            cout<<"Szam be ";
+        cin>>szamtomb[i];
+    }
+}
+
+int main(){
+
+    konzolrolfeltolt();
+    kiir();
+
+    return 0;
+}
