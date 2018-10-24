@@ -1,0 +1,32 @@
+#include <iostream>
+#define TOMBMERET 2
+using namespace std;
+
+int szamtomb[TOMBMERET];
+
+void index(){
+    for(int i=0; i<TOMBMERET; i++){
+        szamtomb[i]=i;
+    }
+}
+
+
+
+void kiir(){
+        cout<<"Osszeg "<<szamtomb[0]+szamtomb[1]<<endl;
+}
+
+void konzolrolfeltolt(){
+    for(int i=0; i<TOMBMERET; i++){
+            cout<<i+1<<"."<<"Szam be ";
+        cin>>szamtomb[i];
+    }
+}
+
+int main(){
+
+    konzolrolfeltolt();
+    kiir();
+
+    return 0;
+}
