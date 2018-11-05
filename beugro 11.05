@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int szam;
+    cin>>szam;
+
+int piramis(){
+    for(int i=1; i<szam+1; i++){
+        for(int j=i; j<szam+1; j++){
+            cout<<"B";
+        }
+        cout<<endl;
+    }
+}
+
+    return 0;
+}
