@@ -1,0 +1,19 @@
+Pointer memo kezelés
+
+Mit lát a gép a pointer, változókból?
+Ha int szam=8;(változó) kis doboz mi mérete =1int(4byte a memóban)
+Míg fut a prog addig a hely lefoglalt.
+Az ,hogy nincs használva az egy nem egzakt kifelyezés.
+Mi bizti, ha memo teli s változóra nincs kivatkozás(azt jelenti ,hogy a még lefutásra váró/ futtatható sorok eggyikében sincs), akk
+felszabadul.
+Ha memo telik akk a háttér tár(pl.:ssd) kezd telni.
+Tanulság, kerülni a memo telést.
+
+Sima változónál látja a 4 bytot s fel tudja szabadítani de pointernél csak az 1. elemet látja.
+
+int*sokszam;
+Sokszam doboz mi rámutat(int*) x (1,2,3,4)darabos tömb 1.jére.
+Ekkor a gép magát a változót szabadítja fel.
+Rossz ,hogy a pointer maga változóként csak cím.
+Mivel a gép csak a változót szabadítja így pointerekkor marad az adat de nem tudjuk hol van.(Memory Leak).
++füzet!
