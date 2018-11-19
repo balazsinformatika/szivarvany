@@ -1,0 +1,147 @@
+#include <iostream>
+using namespace std;
+
+int* lista= nullptr;
+int elemszam;
+
+bool urese(){
+    if(elemszam==0){
+        return true;
+    }
+    return false;
+}
+void toroljmindenelemet(){
+    if(elemszam!=0||lista!= nullptr){
+        delete[]lista;
+        elemszam = 0;
+    }
+}
+
+void vegereujelem(int ujelem){
+    int *ideigleneslista = new int[elemszam+1];
+    for (int i = 0; i < elemszam; ++i) {
+        ideigleneslista[i]=lista[i];
+    }
+    ideigleneslista[elemszam]=ujelem;
+    if(lista){delete[]lista;}
+    lista=ideigleneslista;
+    elemszam++;
+
+}
+
+void elejereujelem(int ujelem){
+    int *ideigleneslista = new int[elemszam+1];
+    ideigleneslista[0]=ujelem;
+    for (int i = 0; i < elemszam; ++i) {
+        ideigleneslista[i+1]=lista[i];
+    }
+    if(lista){delete[]lista;}
+    lista=ideigleneslista;
+    elemszam++;
+}
+
+bool indexcsere(int index, int ujelem){
+    if(index<elemszam&&index>=0){
+        lista[index]=ujelem;
+        return true;
+    }
+    else{ return false;}
+}
+
+bool ketindexcsere(int elsoindex, int masodikindex){
+    if(elsoindex>=0&&elsoindex<elemszam&&
+            masodikindex>=0&&masodikindex<elemszam){
+        int ideiglenes = lista[elsoindex];
+        lista[elsoindex]=lista[masodikindex];
+        lista[masodikindex]=ideiglenes;
+        return true;
+    }
+    return false;
+}
+
+bool teddoda(int index,int ujelem){
+    if(index<0){
+        return false;
+    }
+    else if(index==0){elejereujelem(ujelem);}
+    else if(index==elemszam){vegereujelem(ujelem);}
+    else if(index>elemszam){
+        int *ideigleneslista = new int[index+1];
+        for (int i = 0; i < elemszam; ++i) {
+            ideigleneslista[i]=lista[i];
+        }
+        for (int j = elemszam; j <index ; ++j) {
+            ideigleneslista[j]=0;
+        }
+        ideigleneslista[index]=ujelem;
+        if(lista){delete[]lista;}
+        lista=ideigleneslista;
+        elemszam=index+1;
+
+    }
+    else{
+        int *ideigleneslista = new int[elemszam+1];
+        for (int i = 0; i < index; ++i) {
+            ideigleneslista[i]=lista[i];
+        }
+        ideigleneslista[index]=ujelem;
+        for (int j = index+1; j < elemszam+1; ++j) {
+            ideigleneslista[j] = lista[j-1];
+        }
+        if(lista){delete[]lista;}
+        lista=ideigleneslista;
+        elemszam++;
+    }
+    return true;
+}
+
+void elvalaszto(){
+    cout<<'\n'<<"-----||-----"<<"\n\n";
+}
+
+void listaelemkonzolra(){
+    for (int i = 0; i < elemszam; ++i) {
+        cout<<"Elem ["<<i<<"] = "<<lista[i]<<endl;
+    }
+    elvalaszto();
+
+}
+
+
+
+
+int main() {
+    for (int i = 0; i < 10; ++i) {
+        vegereujelem(i);
+    }
+
+    listaelemkonzolra();
+
+
+    for (int j = 0; j < 10; ++j) {
+        elejereujelem(j+10);
+    }
+
+    listaelemkonzolra();
+
+    teddoda(24,145);
+
+    listaelemkonzolra();
+
+    teddoda(22,8765);
+
+    listaelemkonzolra();
+
+    indexcsere(24,100);
+
+    listaelemkonzolra();
+
+    ketindexcsere(22,25);
+
+    listaelemkonzolra();
+
+    toroljmindenelemet();
+
+    std::cout << "Fasza!" << std::endl;
+    return 0;
+}
