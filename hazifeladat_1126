@@ -1,0 +1,165 @@
+#include <iostream>
+using namespace std;
+
+class Penztar{
+
+private:
+    string nev;
+    unsigned int termek;
+    unsigned int kod;
+
+public:
+    Penztar(){}
+
+    Penztar(string _nev, unsigned int _termek,unsigned int _kod){
+        nev=_nev;
+        termek=_termek;
+        kod=_kod;
+    }
+
+    const string &getNev() const{
+        return nev;
+    }
+
+    unsigned int getTermek() const{
+        return termek;
+    }
+    
+    unsigned int getKod() const{
+        return kod;
+    }
+};
+
+Penztar* lista= NULL;
+int elemszam;
+
+bool urese(){
+    if(elemszam==0){
+        return true;
+    }
+    return false;
+}
+
+void toroljmindenelemet(){
+    if(elemszam!=0||lista!=NULL){
+        delete[]lista;
+        elemszam=0;
+    }
+}
+
+void vegereujelem(Penztar ujelem){
+    Penztar *ideigleneslista = new Penztar[elemszam+1];
+    
+    for (int i = 0; i < elemszam; ++i) {
+        ideigleneslista[i]=lista[i];
+    }
+    
+    ideigleneslista[elemszam]=ujelem;
+    if(lista){delete[]lista;}
+    lista=ideigleneslista;
+    elemszam++;
+}
+
+void elvalaszto(){
+    cout<<'\n'<<"----____----"<<"\n\n";
+}
+
+void konzolrolbe(){
+    cout<<"\t\t Termek nev \t Ar \t Vonalkod"<<endl;
+    for (int i = 0; i < elemszam; ++i) {
+        cout<<"A(z) "<<i+1<<".termek:\t\t"<<lista[i].getNev()<<"\t"<<lista[i].getTermek()<<"Ft"<<"\t"<<lista[i].getKod()<<endl;
+    }
+    
+    elvalaszto();
+}
+
+int atlag(){
+    int osszeg=0;
+     for(int i=0; i<elemszam; i++){
+        osszeg+=lista[i].getTermek();
+        }
+        return osszeg/elemszam;
+     }
+
+int max(){
+    if(elemszam>0){
+       int max=lista[0].getTermek();
+       for(int i=0;i<elemszam;i++){
+        if(lista[i].getTermek()>max){
+            max=lista[i].getTermek();
+        }
+       }
+       return max;
+    }
+    else{return 0;}
+}
+
+int min(){
+   if(elemszam>0){
+      int min=lista[0].getTermek();
+    for(int i=0;i<elemszam;i++){
+        if(lista[i].getTermek()<min){
+            min=lista[i].getTermek();
+        }
+       }
+       return min;
+    }
+    else{return 0;}
+}
+
+int main(){
+    int resp=0;
+    do{
+        cout<<"Valassz:"<<endl;
+        cout<<"\t Termek hozza : (5)"<<endl;
+        cout<<"\t Lista : (4)"<<endl;
+        cout<<"\t Eladott termek atlag : (3)"<<endl;
+        cout<<"\t Legdragabb termek : (2)"<<endl;
+        cout<<"\t Legolcsobb termek : (1)"<<endl;
+        cout<<"\t Kilepes : (0)"<<endl;
+
+        cin>>resp;
+
+        if(resp==5){
+            string pNev;
+            int pTermek;
+            int pKod;
+            
+            cout<<"Nevet:"<<endl;
+            cin>>pNev;
+            
+            cout<<"Arat:"<<endl;
+            cin>>pTermek;
+            
+            cout<<"Vonalkodot:"<<endl;
+            cin>>pKod;
+
+            vegereujelem(Penztar(pNev,pTermek,pKod));
+
+        }
+        else if(resp==4){
+            konzolrolbe();
+        }
+
+        else if(resp==3){
+            cout<<"Atlag:"<<atlag()<<"Ft"<<endl;
+        }
+
+        else if(resp==2){
+            cout<<"Legdragabb:"<<max()<<"Ft"<<endl;
+        }
+
+        else if(resp==1){
+            cout<<"Legolcsobb:"<<min()<<"Ft"<<endl;
+        }
+
+    }while(resp>0);
+
+    cout<<"Vegleges lista:"<<endl;
+    
+    konzolrolbe();
+
+    cout<<"Kilepve."<<endl;
+    
+    return 0;
+}
