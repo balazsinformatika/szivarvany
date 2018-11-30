@@ -1,0 +1,74 @@
+VIK wiki
+Villanyos Informatika 2 Nagyzárthelyi 2015-
+
+#include "pch.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Tanulo{
+
+private:
+	string nev;
+	int eletkor;
+	int igazolvany;
+
+public:
+	Tanulo() {}
+	Tanulo(string _nev, int _eletkor, int _igazolvany) {
+		nev = _nev;
+		eletkor = _eletkor;
+		igazolvany = _igazolvany;
+
+		getEletkor() {
+			return 
+	 }
+	}
+
+	~Tanulo() {}
+
+};
+
+class Osztaly{
+
+private:Tanulo* lista;
+		int elemSzam;
+public:
+	Osztaly() {}
+	~Osztaly() {
+		if (elemSzam != 0 || lista != nullptr) {
+			delete[]lista;
+			elemSzam = 0;
+		}
+	}
+
+	void tanulofelvetele(Tanulo ujTanulo) {
+		Tanulo *ideigleneslista = new Tanulo[elemSzam + 1];
+		for (int i = 0; i < elemSzam; ++i) {
+			ideigleneslista[i] = lista[i];
+		}
+
+		ideigleneslista[elemSzam] = ujTanulo;
+		if (lista) { delete[]lista; }
+		lista = ideigleneslista;
+		elemSzam++;
+     }
+
+	void csere(int elsoindex, int masodikindex) {
+		Tanulo ideiglenes = lista[elsoindex];
+		lista[elsoindex] = lista[masodikindex];
+		lista[masodikindex] = ideiglenes;
+
+		int legidosebb() {
+			if (elemSzam > 0) {
+				int maxKor=lista[0].getEletkor
+			}
+	 }
+	}
+};
+
+
+int main(){
+	Osztaly o;
+	o.tanulofelvetele
+}
