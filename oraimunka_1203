@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <string>
+#include <stdio.h>
+using namespace std;
+
+class Alkatresz {
+private:int gyartasiszam;
+		int suly;
+
+public:Alkatresz() {}
+	   Alkatresz(int _gyartasiszam, int _suly) {
+		   gyartasiszam = _gyartasiszam;
+		   suly = _suly;
+	   }
+
+		   int getGyartasiszam() const{
+			   return gyartasiszam;
+		   }
+
+		   int getSuly() const {
+			   return suly;
+		   }
+
+};
+
+int main(){
+	vector <int> v;
+
+	for (int i = 1; i < 11; i++) {
+		v.push_back(i);
+	}
+
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << endl;
+	}
+
+	vector <Alkatresz> Szerszamoslada;                //Ezt. Vektor függvények.
+	Szerszamoslada.push_back(Alkatresz(1526,853));
+	Szerszamoslada.push_back(Alkatresz(1999, 53));
+	Szerszamoslada.push_back(Alkatresz(1969, 78));
+
+	for (int i = 0; i < Szerszamoslada.size(); i++) {
+		cout << Szerszamoslada[i].getGyartasiszam()<<endl;
+	}
+
+
+	vector<int> vektorom;
+	map<int, string> parom;
+	parom.insert(pair<int, string>(15, "alma"));
+
+	map<int, string>::iterator iter;
+	for (iter = parom.begin(); iter != parom.end(); iter++) {
+
+		cout << iter->first << '\t';
+		cout << iter->second<< '\t';
+	}
+	
+	cout << "Fasza" << endl;
+}
