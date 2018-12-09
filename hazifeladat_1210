@@ -1,0 +1,228 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <string>
+#include <stdio.h>
+using namespace std;
+
+class Termek {
+    
+private:
+    int cikkszam;
+    string nev;
+    int ar;
+    int suly;
+
+public:
+    Termek(){}
+    Termek(int _cikkszam, string _nev, int _ar, int _suly){
+        cikkszam = _cikkszam;
+        nev = _nev;
+        ar = _ar;
+        suly = _suly;
+    }
+
+    int getCikkszam() const{
+        return cikkszam;
+    }
+
+    string getNev() const{
+        return nev;
+    }
+
+    int getAr() const{
+        return ar;
+    }
+
+    int getSuly() const{
+        return suly;
+    }
+};
+
+class Webshop {
+    
+private:
+    vector<Termek> raktaron;
+    vector<Termek> eladott;
+    string nev;
+    string cim;
+
+    int bevetel = 0;
+    int eladottdb = 0;
+
+public:
+    Webshop(){}
+    Webshop(string _nev, string _cim){
+        nev = _nev;
+        cim = _cim;
+    }
+
+    string getNev() const{
+        return nev;
+    }
+
+    string getCim() const{
+        return cim;
+    }
+
+    int getEladottdb() const{
+        return eladottdb;
+    }
+
+    int getBevetel() const{
+        return bevetel;
+    }
+
+    int getTermekraktaron(Termek termek){
+        for(int i = 0; i < raktaron.size(); i++){
+            if(raktaron[i].getCikkszam() == termek.getCikkszam()){
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    void addRaktaron(Termek termek){
+        raktaron.push_back(termek);
+    }
+
+    void removeRaktaron(Termek termek){
+        raktaron.erase(raktaron.begin()+getTermekraktaron(termek));
+    }
+
+    bool isExistsRaktaron(Termek termek){
+        for(int i = 0; i < raktaron.size(); i++){
+            if(raktaron[i].getCikkszam() == termek.getCikkszam()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void addEladott(Termek termek){
+        eladott.push_back(termek);
+    }
+
+    bool isExistsEladott(Termek termek){
+        for(int i = 0; i < eladott.size(); i++){
+            if(eladott[i].getCikkszam() == termek.getCikkszam()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void eladva(Termek termek){
+        removeRaktaron(termek);
+        addEladott(termek);
+        bevetel+=termek.getAr();
+        eladottdb++;
+    }
+
+    Termek getLegdragabbeladott(){
+        Termek temp;
+        for(int i = 0; i < eladott.size(); i++){
+            if(!isExistsEladott(temp) || eladott[i].getAr() > temp.getAr()){
+                temp = eladott[i];
+            }
+        }
+        return temp;
+    }
+
+    Termek getLegolcsobbeladott(){
+        Termek temp;
+        for(int i = 0; i < eladott.size(); i++){
+            if(!isExistsEladott(temp) || eladott[i].getAr() < temp.getAr()){
+                temp = eladott[i];
+            }
+        }
+        return temp;
+    }
+
+    void termekTulajdonsag(Termek termek){
+        cout << "\t Cikkszam \t Nev \t Ar \t Suly" << endl;
+        cout << "\t\t" << termek.getCikkszam() << "\t" << termek.getNev() << "\t" << termek.getAr() << "Ft\t" << termek.getSuly() << "kg" << endl;
+    }
+
+    void termekRaktaron(){
+        cout << "Raktaron termek:" << endl;
+        cout << "\t Cikkszam \t Nev \t Ar \t Suly" << endl;
+        for(int i = 0; i < raktaron.size(); i++){
+            cout << (i+1) << ".\t\t" << raktaron[i].getCikkszam() << "\t" << raktaron[i].getNev() << "\t" << raktaron[i].getAr() << "Ft\t" << raktaron[i].getSuly() << "kg" << endl;
+        }
+    }
+
+    void termekEladott(){
+        cout << "Eladott termek:" << endl;
+        cout << "\t Cikkszam \t Nev \t Ar \t Suly" << endl;
+        for(int i = 0; i < eladott.size(); i++){
+            cout << (i+1) << ".\t\t" << eladott[i].getCikkszam() << "\t" << eladott[i].getNev() << "\t" << eladott[i].getAr() << "Ft\t" << eladott[i].getSuly() << "kg" << endl;
+        }
+    }
+};
+
+void elvalaszto(){
+    cout << "-----------------------------------------------------------------------------------------------------" << endl;
+}
+
+int main(){
+
+    Webshop w("Ebay", "V.hol");
+    
+    Termek t(01, "Alma", 25, 2);
+    
+    Termek t0(03, "Banan", 15, 4);
+    
+    Termek t1(04, "Citrom", 30, 1);
+    
+    Termek t2(06, "Datolya", 220, 3);
+    
+
+    w.addRaktaron(t);
+    
+    w.addRaktaron(t0);
+    
+    w.addRaktaron(t1);
+    
+    w.addRaktaron(t2);
+    
+
+    w.termekRaktaron();
+    elvalaszto();
+    
+    w.termekEladott();
+    elvalaszto();
+    
+
+    w.eladva(t0);
+    w.termekRaktaron();
+    elvalaszto();
+    
+    w.termekEladott();
+    elvalaszto();
+    
+    cout << "Eladott termek szam: " << w.getEladottdb() << endl;
+    
+    cout << "Bevetel: " << w.getBevetel() << "Ft" << endl;
+    elvalaszto();
+
+    w.eladva(t2);
+    w.termekRaktaron();
+    elvalaszto();
+    
+    w.termekEladott();
+    elvalaszto();
+    
+    cout << "Eladott termek szam: " << w.getEladottdb() << endl;
+    cout << "Bevetel: " << w.getBevetel() << "Ft" << endl;
+    elvalaszto();
+
+    cout << "Legolcsobb eladott:" << endl;
+    w.termekTulajdonsag(w.getLegolcsobbeladott());
+    elvalaszto();
+    
+    cout << "Legdragabb eladott:" << endl;
+    w.termekTulajdonsag(w.getLegdragabbeladott());
+   
+    return 0;
+}
