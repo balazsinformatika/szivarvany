@@ -1,0 +1,21 @@
+Input:Azalmapiros
+2,6
+Output:Az alma piros.
+
+//megfelelő includeok kellenek
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+int main(){
+     //vektor adatoknak(kell tip.a)
+	vector<int> adat;
+
+		//vektor elválasztásnak(kell tip.a)
+		vector <int> elvalasztasok;
+
+	//beolv.ivált
+		int eppenBeolvasott;
+}
