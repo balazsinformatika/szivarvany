@@ -1,0 +1,120 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Osztalyzat{
+    
+public:string nev;
+       int jegy;
+
+    Osztalyzat(){}
+
+    Osztalyzat(string _nev, int _jegy){
+        nev=_nev;
+        jegy=_jegy;
+    }
+
+    const string &getNev() const{
+        return nev;
+    }
+
+    int getJegy() const{
+        return jegy;
+    }
+};
+
+Osztalyzat* lista= NULL;
+int elemszam;
+
+bool urese(){
+    if(elemszam==0){
+        return true;
+    }
+    return false;
+}
+
+void toroljmindenelemet(){
+    if(elemszam!=0||lista!=NULL){
+        delete[]lista;
+        elemszam=0;
+    }
+}
+
+void vegereujelem(Osztalyzat ujelem){
+    Osztalyzat *ideigleneslista = new Osztalyzat[elemszam+1];
+    
+    for (int i = 0; i < elemszam; ++i) {
+        ideigleneslista[i]=lista[i];
+    }
+    
+    ideigleneslista[elemszam]=ujelem;
+    if(lista){delete[]lista;}
+    lista=ideigleneslista;
+    elemszam++;
+}
+
+void elvalaszto(){
+    cout<<'\n'<<"------------------------------------------------------------------------------------"<<"\n\n";
+}
+
+void konzolrolbe(){
+    cout<<"\t\tNev \t Jegy"<<endl;
+    for (int i = 0; i < elemszam; ++i) {
+        cout<<"Diak:\t\t"<<lista[i].getNev()<<"\t"<<lista[i].getJegy()<<endl;
+    }
+    
+    elvalaszto();
+}
+
+int max(){
+    if(elemszam>0){
+       int max=lista[0].getJegy();
+       for(int i=0;i<elemszam;i++){
+        if(lista[i].getJegy()>max){
+            max=lista[i].getJegy();
+        }
+       }
+       return max;
+    }
+    else{return 0;}
+}
+
+int main(){
+    int resp=0;
+    do{
+        cout<<"\t Jegy hozza : (1)"<<endl;
+        cout<<"\t Jegyek: (2)"<<endl;
+        cout<<"\t Legjobb jegy : (3)"<<endl;
+
+        cin>>resp;
+
+        if(resp==1){
+            string pNev;
+            int pJegy;
+            
+            
+            cout<<"Nev:"<<endl;
+            cin>>pNev;
+            
+            cout<<"Jegy:"<<endl;
+            cin>>pJegy;
+            
+            vegereujelem(Osztalyzat(pNev,pJegy));
+
+        }
+        else if(resp==2){
+            konzolrolbe();
+        }
+
+        else if(resp==3){
+            cout<<"Legjobb jegy:"<<max()<<endl;
+        }
+
+    }while(resp>0);
+
+    cout<<"Vegleges lista:"<<endl;
+    
+    konzolrolbe();
+    
+    return 0;
+}
