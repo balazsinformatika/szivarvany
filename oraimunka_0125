@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#define TOMBMERET 10
+#include <fstream>
+using namespace std;
+
+class Ember {
+public:
+	string nev;
+	int kor;
+
+	Ember() {};
+
+	Ember(string _nev, int _kor) {
+		nev = _nev;
+		kor = _kor;
+	}
+};
+
+Ember tomb[TOMBMERET];
+
+for(int i = 0; i < TOMBMERET; i++) {
+	int kor;
+	string nev;
+	cin >> kor;
+	cin >> nev;
+
+	tomb[i] = "Ember(kor, nev)";
+}
+
+
+
+
+int main() {
+	ofstream megnyitandoFile("fajl.txt");
+	if (megnyitandoFile.is_open())
+	{
+		int beolvasottKor;
+		cin >> beolvasottKor;
+		megnyitandoFile << beolvasottKor;
+}
