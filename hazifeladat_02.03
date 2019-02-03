@@ -1,0 +1,91 @@
+#include <iostream> //Kül könyvtár használata a kódban, ki iratás.
+#include <string> //Szöveg, betű használata a kódban.
+#include <fstream> //Fájlba való írás, olvasás.
+#include <vector> //Vektor fügvény használata listához.
+
+#define MERET 3 //Fix méretű tömb definiálása.
+
+using namespace std; //Ki iratáskor nem kell a végére az std; .
+
+class Szemely{ //Nyilvános osztály létrehozása mi szöveg s szám adatokat tud tárolni.
+public:
+    string nev;
+    int kor;
+
+    Szemely(){} //Ez biztosítja ,hogy az üres osztály futtatáskor ne tünjön el mivel önmaga van benne.
+    Szemely(string _nev, int _kor){
+        nev=_nev;
+        kor=_kor;
+    }
+
+};
+
+Szemely szemelyek[MERET]; //Tömb miben a fix mennyiségű személlyek lesznek tárolva.
+vector<Szemely> beolvasottSzemelyek; //Személly vektor mibe a beolvasott adatok lesznek tárolva.
+
+int main() {
+    string nev; //Adat tároláshoz való szöveg és szám tárolók.
+    int kor;
+    char elvalaszto='\t'; //Karakter tároló miben egy tab.
+
+    for (int i = 0; i < MERET; ++i) { //Definiált tömbön végigmenés malyd adatok beolvasása a konzolról a jó változóba.
+        cout<<"Kerem adja meg a "<<i<<". szemely nevet: "<<endl;
+        cin>>nev;
+        cout<<"Kerem adja meg a "<<i<<". szemely korat: "<<endl;
+        cin>>kor;
+        szemelyek[i]=Szemely(nev, kor); //i-edik adatok tárolva ideiglenes változóban s ezek tömbbe töltése szemely példányhoz.
+                                        //Így szemelyek szemely-ek el miknek saját nev-ük, kor-uk.
+    } //Mire a for végez addigra minden szemely-nek meglessznek a jó paraméterei. 
+
+
+    ofstream fajlom("lista.txt"); //Kapcs a program s a létrehozandó / meglévő lista.txt fájl közt.
+
+    if(fajlom.is_open()){ //Program, fájl kapcsolat vizsgálata s ha van visszatér egy igaz ki írással.
+        cout<<"A fajl megnyitva irasra."<<endl;
+
+        for (int i = 0; i < MERET; ++i) { //Szemelyek adatai a fájlba.
+            fajlom<<szemelyek[i].nev;
+            fajlom<<'\t';
+            fajlom<<szemelyek[i].kor;
+            fajlom<<'\n';
+        }
+        cout<<"A fajl feltoltve."<<endl; //Mikor a tömbnyi szemely adatai megvannak ki írja.
+
+    } else{cout<<"Nem sikerult megnyitni a fajlt!";} //Ha nincs kapcs a program s fájl közt akkor kiírja.
+
+    fajlom.close(); //Feltöltő program s feltöltendő fájl kapcs szakítása s majd egy ki iratás.
+    cout<<"A fajl bezarva."<<endl;
+
+    ifstream fajlomOlvasasra("lista.txt"); //Feltöltött fájl használata.
+
+    if(fajlomOlvasasra.is_open()){ //Kiolvasó program s olvasandó fájl kapcs vizsgálat olvasáshoz.
+        cout<<"A fajl megnyitva olvasasra."<<endl;
+
+        string beolvasottSor; //Tárolók a beolvasott adatoknak.
+
+        string kiolvasottNev;
+        string kiolvasottKor;
+
+        while (getline(fajlomOlvasasra,beolvasottSor)){ //Míg van mit addig olvasunk be s az adatok a megfelelő helyre.
+            unsigned long elvalasztoHelye=beolvasottSor.find('\t');
+            kiolvasottNev=beolvasottSor.substr(0,elvalasztoHelye);
+            kiolvasottKor=beolvasottSor.substr(elvalasztoHelye+1,beolvasottSor.size());
+
+            int kor=stoi(kiolvasottKor);
+
+            beolvasottSzemelyek.push_back(Szemely(kiolvasottNev,kor)); //Adatok listában egymás utáni elhelyezése.
+        }
+
+    }else{cout<<"Nem sikerult megnyitni a fajlt!";} //Ha nincs kapcs a program s fájl közt ki írja.
+
+    fajlomOlvasasra.close(); //Be töltő program s beolott fájl kapcs szakítása majd ki iratás.
+    cout<<"A fajl olvasasa befejezodott."<<endl;
+
+    for (int j = 0; j < beolvasottSzemelyek.size(); ++j) { //Beolvasott s tárolt adatokon végig s ki írni.
+        cout<<beolvasottSzemelyek[j].nev<<'\t'<<beolvasottSzemelyek[j].kor<<endl;
+    }
+    cout<<"Minden tarolt adat kiirva."<<endl;
+
+    std::cout << "A kod a vegehez ert." << std::endl;
+    return 0;
+}
