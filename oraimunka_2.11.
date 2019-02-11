@@ -1,0 +1,118 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+class Tranzakcio {
+public:string nev;
+	   int ar;
+
+	   Tranzakcio() {}
+	   Tranzakcio(string _nev, int _ar) {
+		   nev = _nev;
+		   ar = _ar;
+	   }
+};
+
+vector <Tranzakcio> konzolrolTranzakciok;
+vector <Tranzakcio> beolvasottTranzakciok;
+
+int main() {
+	string nev;
+	int ar;
+	int db = 1;
+	char elvalaszto = ':';
+
+	while (nev != "0") {
+		cout << db << ".tranzakcio nevet." << endl;
+		cin >> nev;
+
+		if (nev != "0") {
+			cout << db << ".tranzakcio arat." << endl;
+			cin >> ar;
+			db++;
+			konzolrolTranzakciok.push_back(Tranzakcio(nev,ar));
+		}
+	}
+
+	cout<<"Beolvasott tranzakcio szama:"<<konzolrolTranzakciok.size()<<endl;
+
+	ofstream fajlom("vasarlasok.txt");
+
+	if(fajlom.is_open()) {
+		cout << "Nyitva irasra." << endl;
+
+		for (int i = 0; i < konzolrolTranzakciok.size(); i++) {
+			fajlom << konzolrolTranzakciok[i].nev;
+			fajlom << elvalaszto;
+			fajlom << konzolrolTranzakciok[i].ar;
+			fajlom << '\n';
+		}
+
+		cout << "Feltoltve." << endl;
+	}
+
+	else {
+		cout<<"Nincs nyitva."<<endl;
+	}
+
+	fajlom.close();
+	cout << "Zarva." << endl;
+
+	ifstream fajlomOlvasasra("vasarlasok.txt");
+
+	if (fajlomOlvasasra.is_open()) {
+		cout << "Nyitva olvasasra." << endl;
+
+		string beolvasottSor;
+		string kiolvasottNev;
+		string kiolvasottAr;
+
+		while (getline(fajlomOlvasasra, beolvasottSor)) {
+			unsigned long elvalasztoHelye = beolvasottSor.find('\t');
+			kiolvasottNev = beolvasottSor.substr(0, elvalasztoHelye);
+			kiolvasottAr = beolvasottSor.substr(elvalasztoHelye + 1, beolvasottSor.size());
+
+			int ar = stoi(kiolvasottAr);
+
+			beolvasottTranzakciok.push_back(Tranzakcio(kiolvasottNev,Ar));
+		}
+	}
+
+	else {
+		cout<<"Nincs nyitva."<<endl;
+	}
+
+	fajlomOlvasasra.close();
+	cout<<"Olvasas kesz."<<endl;
+
+	for (int j = 0; j < beolvasottTranzakciok.size(); j++) {
+		cout << beolvasottTranzakciok[j].nev << elvalaszto << beolvasottTranzakciok[j].ar << endl;
+	}
+
+	cout << "Ki irva." << endl;
+
+	int arOsszeg = 0;
+
+	for (int k = 0; k < beolvasottTranzakciok.size(); k++) {
+		arOsszeg += beolvasottTranzakciok[k].ar;
+	}
+
+	int atlagAr = arOsszeg / beolvasottTranzakciok.size();
+
+	cout<<"Atlag ar:"<<atlagAr<<endl;
+
+	int maxAr = beolvasottTranzakciok[0].ar;
+	int minAr = beolvasottTranzakciok[0].ar;
+
+	string legkissebbAr = beolvasottTranzakciok[0].nev;
+	string legnagyobbAr = beolvasottTranzakciok[0].nev;
+
+	for (int l = 0; l < beolvasottTranzakciok.size(); l++) {
+		if (beolvasottTranzakciok[l].ar > maxAr) {
+			maxAr = beolvasottTranzakciok[l].ar;
+			
+		}
+	}
+}
