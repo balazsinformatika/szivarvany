@@ -1,0 +1,30 @@
+//created by Arvai Balazs J..
+#include <iostream> 
+#include <string>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+class Auto {
+public:
+	string rendszam;
+	int loero;
+
+	Auto() {}
+	Auto(string _rendszam, int _loero) {
+		rendszam = _rendszam;
+		loero = _loero;
+	}
+};
+
+vector<Auto> kiAuto;
+
+//Le egyszeerusitem a fajl elerest a:void fajlom('fajlom.txt'); vel
+//Tarolokat hozok letre mik a konzolrol valo be olvasas utan tarolja az adatot.
+//E melle egy db=0; valtozot mi segit a bizonytalan szamu vectoron vegig menni.
+//ifstream("fajlom.is_open") kapcsolat teremtese a prog s fajl kozott.
+
+int main() {
+
+	return 0;
+}
