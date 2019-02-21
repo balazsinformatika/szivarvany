@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+class Kaja {
+public:
+	string nev;
+	int kcal;
+
+	Kaja() {}
+	Kaja(string _nev, int _kcal) {
+		nev = _nev;
+		kcal = _kcal;
+	}
+};
+
+vector <Kaja> beKajak;
+
+const char elvalaszto = '-';
+const string fajlNev = "fajl.txt";
+
+bool beOlvasoFajl() {
+	ifstream FajlOlvasasra(fajlNev);
+
+	string beolvasottSor;
+
+	string beolvasottNev;
+	string beolvasottKcal;
+
+	while(getline(FajlOlvasasra,beolvasottSor)) {
+		fajlNev.elvalasztoHelye = beolvasottSor.find(elvalaszto)
+
+			beolvasottNev = beolvasottSor.substr(0, elvalasztoHelye);
+		    beolvasottKcal=beolvasottSor.substr(elvalasztoHelye + 1, beolvasottSor.size());
+
+			int konvertaltKcal = stoi(beolvasottKcal);
+
+	}
+}
+
+int minKereses() {
+	int min = beKajak[0].kcal;
+	if (beKajak[i].kcal < min) {
+		min = beKajak[i].kcal;
+	}
+
+	return min;
+}
+
+int main() {
+
+}
