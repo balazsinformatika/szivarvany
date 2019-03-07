@@ -1,0 +1,21 @@
+szám.szám.szám.szám
+
+Decimál számrendsz.
+192.168.0.1
+oktettekből oktett(8bináris szám) 10011011
+
+Bin számrendsz{0,1} helyi ért:<-2 3.on 2 2.on 2 1.n 2 0.n pl:1011 1 x 2 3.on stb.
+
+Decimális{0,- 9} helyiért:10hatványai, 4jegyü szám:<-:10 3.on 10 2.on 10 1.n 10 0.n pl:5642=5 x 10 3.n stb.
+
+dec->dec:5642=5*10=50+6=56*10=560+4=564*10=5640+2=5642
+
+bin->dec szám*2+kövi...vég+utcsó.
+1nél szor utcsó csak összead.
+
+Doga:Oktett 8bit; bin->dec
+            dec ->bin:Max ábrázolható szám mindig eggyel kissebb mint a kövi:n db biten 2 n.n-1
+            max:11111111
+            min:00000000
+            
+            
